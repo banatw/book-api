@@ -6,10 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,23 +19,13 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Book {
+public class Publisher {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer bookId;
+    @NonNull
+    private Integer publisherId;
 
     @NonNull
-    private String title;
-
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "authorId")
-    private Author author;
-
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "publisherId")
-    private Publisher publisher;
+    private String name;
 
     @UpdateTimestamp
     private Date auditDate;

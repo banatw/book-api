@@ -44,7 +44,6 @@ public class BookController {
             Book oBook = bookRepository.findById(id).get();
             oBook.setTitle(book.getTitle());
             oBook.setAuthor(book.getAuthor());
-            oBook.setGenre(book.getGenre());
             oBook.setPublisher(book.getPublisher());
             return bookRepository.save(oBook);
         } catch (Exception e) {
