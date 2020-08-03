@@ -1,29 +1,20 @@
 package com.example.bookapi.entity;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-@Entity
 @Data
-@NoArgsConstructor
 @RequiredArgsConstructor
+@Table("author")
 public class Author {
     @Id
-    @NonNull
     private Integer authorId;
-
     @NonNull
+    @Column(value = "author_name")
     private String name;
-
-    @UpdateTimestamp
-    private Date auditDate;
 }

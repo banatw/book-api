@@ -1,13 +1,11 @@
 package com.example.bookapi;
 
-import java.util.Locale;
-
 import com.example.bookapi.entity.Author;
 import com.example.bookapi.entity.Book;
 import com.example.bookapi.entity.Publisher;
-import com.example.bookapi.repo.AuthorRepository;
-import com.example.bookapi.repo.BookRepository;
-import com.example.bookapi.repo.PublisherRepository;
+import com.example.bookapi.repo.AuthorRepos;
+import com.example.bookapi.repo.BookRepos;
+import com.example.bookapi.repo.PublisherRepos;
 import com.github.javafaker.Faker;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +15,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class BookApiApplication implements CommandLineRunner {
-	@Autowired
-	private BookRepository bookRepository;
 
 	@Autowired
-	private AuthorRepository authorRepository;
+	private BookRepos bookRepos;
 
 	@Autowired
-	private PublisherRepository publisherRepository;
+	private AuthorRepos authorRepos;
+
+	@Autowired
+	private PublisherRepos publisherRepos;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookApiApplication.class, args);
@@ -32,23 +31,15 @@ public class BookApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Faker faker = new Faker(new Locale("in_ID"));
-		for (int i = 1; i < 5; ++i) {
-			Publisher publisher = new Publisher(i, faker.book().publisher());
-			publisherRepository.save(publisher);
+		// TODO Auto-generated method stub
+		Faker faker = new Faker();
+		for (int i = 0; i < 5; i++) {
+			authorRepos.save(new Author(faker.book().author()));
+			publisherRepos.save(new Publisher(faker.book().publisher()));
 		}
 
-		for (int i = 1; i < 5; ++i) {
-			Author author = new Author(i, faker.book().author());
-			authorRepository.save(author);
-		}
-
-		for (int i = 0; i < 20; ++i) {
-			// Random random = new Random();
-			Publisher publisher = publisherRepository.findById(2).get();
-			Author author = authorRepository.findById(2).get();
-
-			bookRepository.save(new Book(faker.book().title(), author, publisher));
+		for (int i = 0; i < 20; i++) {
+			bookRepos.save(new Book(faker.book().title(), 2, 3));
 		}
 	}
 
