@@ -20,7 +20,7 @@ public class BookConfig extends AbstractJdbcConfiguration {
     public DataSource dataSource() {
 
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.H2).addScripts("schema.sql").build();
+        return builder.setType(EmbeddedDatabaseType.H2).build();
     }
 
     @Bean

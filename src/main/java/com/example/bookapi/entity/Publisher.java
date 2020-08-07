@@ -12,5 +12,5 @@ public class Publisher {
     @Id
     private Integer publisherId;
     @NonNull
-    private String publisherName;
+    private String name;
 }

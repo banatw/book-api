@@ -10,13 +10,13 @@ CREATE TABLE book (
 DROP TABLE IF EXISTS  publisher;
 CREATE TABLE publisher (
     publisher_id INTEGER NOT NULL AUTO_INCREMENT,
-    publisher_name VARCHAR(255) NOT  NULL,
+    name VARCHAR(255) NOT  NULL,
     PRIMARY KEY (publisher_id)
 );
 
 DROP TABLE IF EXISTS  author;
 CREATE TABLE author (
     author_id INTEGER NOT NULL AUTO_INCREMENT,
-    author_name VARCHAR(255) NOT  NULL,
+    name VARCHAR(255) NOT  NULL,
     PRIMARY KEY (author_id)
 );

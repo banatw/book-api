@@ -12,5 +12,5 @@ public class Author {
     @Id
     private Integer authorId;
     @NonNull
-    private String authorName;
+    private String name;
 }
